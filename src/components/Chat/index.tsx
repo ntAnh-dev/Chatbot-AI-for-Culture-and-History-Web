@@ -1,63 +1,16 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-type Message = {
-  role: string;
-  content: string;
-}
+import Micro from "../../assets/mic.png";
 
 const ChatWindow = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [value, setValue] = useState("");
-
-  const handleQuestion = () => {
-    const url = "http://127.0.0.1:8000/question";
-    axios.post(url, {
-      question: value
-    }).then((response) => {
-      setMessages([...messages, {
-        role: "chatbot", 
-        content: response.data.answer
-      }]);
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
-
-  const handleEnter = () => {
-    setMessages([...messages, {
-      role: "user",
-      content: value
-    }]); 
-    setValue(""); 
-  }
-
-  useEffect(() => {
-    if (value !== "") {
-      handleQuestion();
-    }
-  }, [value]);
  
   return (
-    <div className="w-screen h-dvh bg-black flex flex-col p-5 gap-5">
-      <div className="flex-grow flex flex-col gap-2">
-        {messages.map((message, index) => 
-          <div key={index} className={"p-2 bg-white rounded-sm w-1/2 " + (message.role === "user" ? "self-end" : "")}>
-            {message.content}
-          </div>
-        )}
+    <div className="h-full w-full flex flex-col justify-center p-4">
+      <div className="flex-grow flex flex-col">CHAT CONTENT</div>
+      <div className="bg-[#303030] rounded-xl p-4 h-14 flex">
+        <input className="focus:outline-none text-white flex-grow" placeholder="Hỏi tôi về đình, đền, chùa Việt Nam" />
+        <button className="opacity-30 hover:opacity-100 hover:cursor-pointer">
+          <img src={Micro} className="h-full aspect-square" />
+        </button>
       </div>
-      <input 
-        type="text" placeholder="Type your message"
-        className="w-full p-2 bg-white rounded-sm" 
-        value={value} 
-        onChange={(e) => setValue(e.target.value)} 
-        onKeyDown={(e) => { 
-          if (e.key === "Enter") { 
-            handleEnter();
-          }
-        }} 
-      />
     </div>
   )
 }

@@ -41,10 +41,18 @@ const ChatWindow = () => {
       refetch();
     }
   });
- 
+  
   return (
     <div className="h-full w-full flex flex-col justify-center p-4">
-      <div className="flex-grow flex flex-col">{conversationId}</div>
+      <div className="flex-grow flex flex-col gap-4">
+        {(conversation?.data.messages || []).map(item => (
+          <div className={"w-full flex " + (item.role === "user" ? "justify-end" : "")}>
+            <div className={"w-10/12 bg-[#303030] text-white p-4 rounded-md "}>
+              {item.message}
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="bg-[#303030] rounded-xl p-4 h-14 flex">
         <input 
           className="focus:outline-none text-white flex-grow" placeholder="Hỏi tôi về đình, đền, chùa Việt Nam"

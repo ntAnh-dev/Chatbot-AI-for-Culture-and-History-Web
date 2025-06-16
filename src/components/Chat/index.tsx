@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { getToken } from "../../utils/localStorage";
 
-const apiUrl = 'http://host.docker.internal:9000';
+const apiUrl = 'http://nestjs:9000';
 
 const createConver = async (data) => {
   const token = getToken();

@@ -5,7 +5,7 @@ import { clearEmail, clearToken, getEmail, hasToken, saveEmail, saveToken } from
 import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 
-const apiUrl = 'http://localhost:9000';
+const apiUrl = 'http://host.docker.internal:9000';
 
 const In = async (data: { email: string }) => {
   return axios.post(`${apiUrl}/auth/in`, data);

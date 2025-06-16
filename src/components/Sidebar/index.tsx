@@ -5,7 +5,7 @@ import axios from "axios";
 import { getToken } from "../../utils/localStorage";
 import { useQuery } from "@tanstack/react-query";
 
-const apiUrl = 'http://localhost:9000';
+const apiUrl = 'http://host.docker.internal:9000';
 
 const getConversations = async () => {
   return axios.get(`${apiUrl}/chatbot/conversations`, {

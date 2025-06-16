@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SendMessage from "../../assets/send-message.png";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { getToken, hasToken } from "../../utils/localStorage";
+import { getToken } from "../../utils/localStorage";
 
 const apiUrl = 'http://localhost:9000';
 
